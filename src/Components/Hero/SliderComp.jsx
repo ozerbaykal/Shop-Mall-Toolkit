@@ -46,21 +46,9 @@ const SliderComp = () => {
           </div>
           <img
             src="https://akn-ss.a-cdn.akinoncloud.com/products/2024/08/23/32163585/959b1ed4-05bd-46a8-92ad-88ef884374b6_size2048x2048_cropCenter.jpg"
-            width={400}
-            height={400}
+            width={350}
+            height={350}
           />
-        </div>
-        <div>
-          <h3>3</h3>
-        </div>
-        <div>
-          <h3>4</h3>
-        </div>
-        <div>
-          <h3>5</h3>
-        </div>
-        <div>
-          <h3>6</h3>
         </div>
       </Slider>
     </div>
