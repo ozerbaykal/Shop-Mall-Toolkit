@@ -6,7 +6,7 @@ import Product from "./Product";
 import Error from "../Error";
 import ReactPaginate from "react-paginate";
 
-const Products = ({ category }) => {
+const Products = ({ category, sort }) => {
   const dispatch = useDispatch();
   const { products, productsStatus } = useSelector((store) => store.products);
 
@@ -39,17 +39,25 @@ const Products = ({ category }) => {
   };
 
   return (
-    <div className="flex flex-col justify-center w-full">
+    <div className="flex flex-col w-full ">
       {productsStatus == "LOADING" ? (
         <Loader />
       ) : productsStatus == "ERROR ?" ? (
         <Error />
       ) : (
         <>
-          <div className="flex gap-5 flex-wrap ">
-            {currentItems?.map((product) => (
-              <Product products={product} key={product.id} />
-            ))}
+          <div className="flex gap-5 flex-wrap justify-center my-5 ">
+            {currentItems
+              ?.sort((a, b) =>
+                sort == "inc"
+                  ? a.price - b.price
+                  : sort == "dec"
+                  ? b.price - a.price
+                  : " "
+              )
+              .map((product) => (
+                <Product products={product} key={product.id} />
+              ))}
           </div>
           <ReactPaginate
             className="paginate"

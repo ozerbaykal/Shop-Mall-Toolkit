@@ -7,14 +7,13 @@ import Sorting from "../../Components/Hero/Sorting";
 const Home = () => {
   const [sort, setSort] = useState("");
   const [category, setCategory] = useState("");
-  console.log(category);
   return (
     <div>
       <SliderComp />
-      <Sorting />
+      <Sorting setSort={setSort} />
       <div className="flex gap-10 ">
         <Category setCategory={setCategory} />
-        <Products category={category} />
+        <Products category={category} sort={sort} />
       </div>
     </div>
   );
