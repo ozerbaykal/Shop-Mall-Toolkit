@@ -37,7 +37,7 @@ const Cart = () => {
       ) : (
         <div className="grid place-items-center h-[400px]">
           <p className="bg-gray-200 px-20 py-10 rounded-md text-xl text-center">
-            Kartınız Boş :(
+            Sepetiniz Boş :(
             <br /> Lütfen ürün ekleyin..
           </p>
         </div>
