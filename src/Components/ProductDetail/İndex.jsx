@@ -1,8 +1,27 @@
-import { useState } from "react";
 import Quantity from "./Quantity";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../redux/cartSlice";
+import { useState } from "react";
 import Button from "./Button";
+import { Link } from "react-router-dom";
 
 const ProductDetail = ({ productDetail }) => {
+  const [quantity, setQuantity] = useState(0);
+
+  const dispatch = useDispatch();
+
+  const addBasket = () => {
+    dispatch(
+      addToCart({
+        id: productDetail?.id,
+        title: productDetail?.title,
+        image: productDetail?.image,
+        quantity: quantity,
+        price: productDetail?.price,
+      })
+    );
+  };
+
   return (
     <div className="flex gap-10 my-10 max-w-screen-2xl">
       <img
@@ -27,8 +46,20 @@ const ProductDetail = ({ productDetail }) => {
           {productDetail?.price}
           <span className="text-base text-zinc-600"> ₺</span>
         </div>
-        <Quantity />
-        <Button />
+        <Quantity
+          count={productDetail?.rating?.count}
+          quantity={quantity}
+          setQuantity={setQuantity}
+        />
+        <div className="flex items-center  justify-between">
+          <Button add={addBasket} quantity={quantity} />
+          <Link
+            className="text-xl px-4 py-2 bg-gray-200 rounded-md hover:bg-gray-400 transition"
+            to={".."}
+          >
+            Geri
+          </Link>
+        </div>
       </div>
     </div>
   );

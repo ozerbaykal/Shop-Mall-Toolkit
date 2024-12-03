@@ -12,7 +12,6 @@ const Detail = () => {
   const { productDetail, productDetailStatus } = useSelector(
     (store) => store.products
   );
-  console.log(productDetail);
 
   useEffect(() => {
     dispatch(getDetailProduct(id));
